@@ -4,6 +4,7 @@ const searchSongs = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => displaySongs(data.data))
+    .catch(error => displayError('Something went wrong!! Please try again later!'))
 }
 
 const displaySongs = songs => {
@@ -38,4 +39,9 @@ const getLyrics = (artist, title) => {
 const displayLyrics = lyrics => {
     const lyricsDiv = document.getElementById("song-lyrics");
     lyricsDiv.innerText = lyrics;
+}
+
+const displayError = error => {
+    const errorTag = document.getElementById("error-message");
+    errorTag.innerText = error;
 }
